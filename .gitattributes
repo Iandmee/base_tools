@@ -60,6 +60,8 @@
 *.project filter=lfs diff=lfs merge=lfs -text
 *.prefs filter=lfs diff=lfs merge=lfs -text
 /sdklib2/MODULE_LICENSE_APACHE2 filter=lfs diff=lfs merge=lfs -text
+/gradlew filter=lfs diff=lfs merge=lfs -text
+*.MF filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
