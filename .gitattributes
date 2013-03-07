@@ -70,6 +70,8 @@
 /manifmerger/NOTICE filter=lfs diff=lfs merge=lfs -text
 *.groovy filter=lfs diff=lfs merge=lfs -text
 *.pom filter=lfs diff=lfs merge=lfs -text
+/legacy/anttasks/NOTICE filter=lfs diff=lfs merge=lfs -text
+/legacy/archquery/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
