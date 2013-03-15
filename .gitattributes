@@ -74,6 +74,15 @@
 /legacy/archquery/NOTICE filter=lfs diff=lfs merge=lfs -text
 /misc/screenshot2/NOTICE filter=lfs diff=lfs merge=lfs -text
 /misc/screenshot2/etc/screenshot2 filter=lfs diff=lfs merge=lfs -text
+/asset-studio/NOTICE filter=lfs diff=lfs merge=lfs -text
+/layoutlib-api/NOTICE filter=lfs diff=lfs merge=lfs -text
+/legacy/ant-tasks/NOTICE filter=lfs diff=lfs merge=lfs -text
+/lint/libs/lint-api/NOTICE filter=lfs diff=lfs merge=lfs -text
+/lint/libs/lint-checks/NOTICE filter=lfs diff=lfs merge=lfs -text
+/manifest-merger/NOTICE filter=lfs diff=lfs merge=lfs -text
+/manifest-merger/etc/manifmerger filter=lfs diff=lfs merge=lfs -text
+/rule-api/NOTICE filter=lfs diff=lfs merge=lfs -text
+/sdk-common/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
