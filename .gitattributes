@@ -87,6 +87,10 @@
 *.xml# filter=lfs diff=lfs merge=lfs -text
 /templates/gradle/wrapper/gradlew filter=lfs diff=lfs merge=lfs -text
 *.trace filter=lfs diff=lfs merge=lfs -text
+/templates/gradle-projects/NewAndroidApplication/root/module_ignore filter=lfs diff=lfs merge=lfs -text
+/templates/gradle-projects/NewAndroidApplication/root/project_ignore filter=lfs diff=lfs merge=lfs -text
+/templates/gradle-projects/NewAndroidLibrary/root/gitignore filter=lfs diff=lfs merge=lfs -text
+/templates/gradle-projects/NewJavaLibrary/root/gitignore filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
