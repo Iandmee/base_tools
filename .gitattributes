@@ -121,6 +121,7 @@
 /templates/gradle-projects/AndroidWearModule/root/module_ignore filter=lfs diff=lfs merge=lfs -text
 /templates/gradle-projects/NewAndroidTVModule/root/module_ignore filter=lfs diff=lfs merge=lfs -text
 /templates/gradle-projects/NewGlassModule/root/module_ignore filter=lfs diff=lfs merge=lfs -text
+*.android-hprof filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
