@@ -133,6 +133,7 @@
 /build-system/integration-test/samples/basic/src/main/res/.vcs/INDEX filter=lfs diff=lfs merge=lfs -text
 /build-system/integration-test/test-projects/shrink/webview/src/main/res/raw/unknown filter=lfs diff=lfs merge=lfs -text
 /templates/eclipse/gradle/wrapper/gradlew filter=lfs diff=lfs merge=lfs -text
+/annotations/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
