@@ -145,6 +145,7 @@
 /lint/libs/lint-tests/NOTICE filter=lfs diff=lfs merge=lfs -text
 *.rules filter=lfs diff=lfs merge=lfs -text
 *.svg filter=lfs diff=lfs merge=lfs -text
+/templates/gradle-projects/NewAndroidAutoProject/root/project_ignore filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
