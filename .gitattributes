@@ -142,6 +142,9 @@
 /build-system/gradle-experimental/NOTICE filter=lfs diff=lfs merge=lfs -text
 /build-system/integration-test/test-projects/basic/src/main/res/.vcs/INDEX filter=lfs diff=lfs merge=lfs -text
 *.ivy filter=lfs diff=lfs merge=lfs -text
+/lint/libs/lint-tests/NOTICE filter=lfs diff=lfs merge=lfs -text
+*.rules filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
