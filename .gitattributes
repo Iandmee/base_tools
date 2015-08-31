@@ -150,6 +150,8 @@
 /lint/libs/lint-tests/src/test/java/com/android/tools/lint/checks/data/apicheck/classpath filter=lfs diff=lfs merge=lfs -text
 /lint/libs/lint-tests/src/test/java/com/android/tools/lint/checks/data/bytecode/classpath-jar filter=lfs diff=lfs merge=lfs -text
 /lint/libs/lint-tests/src/test/java/com/android/tools/lint/checks/data/bytecode/classpath-lib filter=lfs diff=lfs merge=lfs -text
+*.ipr filter=lfs diff=lfs merge=lfs -text
+*.iws filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
