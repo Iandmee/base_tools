@@ -165,6 +165,12 @@
 /build-system/builder/src/test/resources/testData/packaging/root filter=lfs diff=lfs merge=lfs -text
 /profiler/integration-tests/ProfilerApp/gradlew filter=lfs diff=lfs merge=lfs -text
 *.apk filter=lfs diff=lfs merge=lfs -text
+*.md filter=lfs diff=lfs merge=lfs -text
+*.mk filter=lfs diff=lfs merge=lfs -text
+*.java# filter=lfs diff=lfs merge=lfs -text
+*.class filter=lfs diff=lfs merge=lfs -text
+*.ec filter=lfs diff=lfs merge=lfs -text
+*.j filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
