@@ -173,6 +173,8 @@
 *.j filter=lfs diff=lfs merge=lfs -text
 *.cc filter=lfs diff=lfs merge=lfs -text
 *.proto filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/test-projects/externalBuildPlugin/apk_manifest filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/test-projects/externalBuildPlugin/apk_manifest_text filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
