@@ -212,6 +212,7 @@
 *.psd filter=lfs diff=lfs merge=lfs -text
 /build-system/integration-test/test-projects/externalBuildPlugin/README filter=lfs diff=lfs merge=lfs -text
 *.ap_ filter=lfs diff=lfs merge=lfs -text
+/rule-api/MODULE_LICENSE_EPL filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
