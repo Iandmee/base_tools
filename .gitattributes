@@ -225,6 +225,10 @@
 /bazel/groovy/bin/startGroovy filter=lfs diff=lfs merge=lfs -text
 *.conf filter=lfs diff=lfs merge=lfs -text
 *.icns filter=lfs diff=lfs merge=lfs -text
+/bazel/kotlin/bin/kotlin filter=lfs diff=lfs merge=lfs -text
+/bazel/kotlin/bin/kotlinc filter=lfs diff=lfs merge=lfs -text
+/bazel/kotlin/bin/kotlinc-js filter=lfs diff=lfs merge=lfs -text
+/bazel/kotlin/bin/kotlinc-jvm filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
