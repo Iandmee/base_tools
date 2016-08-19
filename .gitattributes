@@ -263,6 +263,10 @@
 /bazel/prebuilts/linux/bazel-real filter=lfs diff=lfs merge=lfs -text
 /bazel/sdk/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/sdk/dev-sdk-packages filter=lfs diff=lfs merge=lfs -text
+/third_party/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/proto/BUILD filter=lfs diff=lfs merge=lfs -text
+/templates/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
