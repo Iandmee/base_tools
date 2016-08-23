@@ -267,6 +267,11 @@
 /profiler/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /templates/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
+/build-system/builder/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/profile/BUILD filter=lfs diff=lfs merge=lfs -text
+/jack/jack-api/BUILD filter=lfs diff=lfs merge=lfs -text
+/jack/jill-api/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
