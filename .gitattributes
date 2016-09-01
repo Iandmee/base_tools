@@ -267,6 +267,7 @@
 /profiler/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /templates/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
