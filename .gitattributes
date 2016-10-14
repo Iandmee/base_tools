@@ -287,6 +287,7 @@
 /profiler/native/perfd/event/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/native/perfd/energy/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/native/perfa/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/gradle_projects filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
