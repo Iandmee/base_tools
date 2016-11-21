@@ -309,6 +309,8 @@
 /build-system/integration-test/BUILD filter=lfs diff=lfs merge=lfs -text
 /testing-infrastructure/device-pool/device-provider/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/sdk/qa-sdk-packages filter=lfs diff=lfs merge=lfs -text
+/bazel/prebuilts/darwin-x86/buildifier filter=lfs diff=lfs merge=lfs -text
+/bazel/prebuilts/linux-x86/buildifier filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
