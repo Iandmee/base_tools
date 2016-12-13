@@ -312,6 +312,7 @@
 /bazel/prebuilts/darwin-x86/buildifier filter=lfs diff=lfs merge=lfs -text
 /bazel/prebuilts/linux-x86/buildifier filter=lfs diff=lfs merge=lfs -text
 /instant-run/instant-run-server/BUILD filter=lfs diff=lfs merge=lfs -text
+*.jack filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
