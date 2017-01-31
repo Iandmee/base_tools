@@ -318,6 +318,10 @@
 /profiler/native/dex/slicer/BUILD filter=lfs diff=lfs merge=lfs -text
 *.BiConsumer filter=lfs diff=lfs merge=lfs -text
 /devicelib/BUILD filter=lfs diff=lfs merge=lfs -text
+/aaptjlib/BUILD filter=lfs diff=lfs merge=lfs -text
+*.dylib filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.binxml filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
