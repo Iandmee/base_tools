@@ -328,6 +328,11 @@
 *.expected filter=lfs diff=lfs merge=lfs -text
 /fakeadbserver/BUILD filter=lfs diff=lfs merge=lfs -text
 /fakeadbserver/NOTICE filter=lfs diff=lfs merge=lfs -text
+*.asm filter=lfs diff=lfs merge=lfs -text
+*.map filter=lfs diff=lfs merge=lfs -text
+*.stats filter=lfs diff=lfs merge=lfs -text
+*.hello_stats filter=lfs diff=lfs merge=lfs -text
+*.am_stats filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
