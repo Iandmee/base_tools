@@ -338,6 +338,16 @@
 /bazel/test/kotlin/BUILD filter=lfs diff=lfs merge=lfs -text
 /apkparser/analyzer/BUILD filter=lfs diff=lfs merge=lfs -text
 *.entry_hook filter=lfs diff=lfs merge=lfs -text
+/build-system/java-lib-plugin/java-lib-model-builder/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/java-lib-plugin/java-lib-model/BUILD filter=lfs diff=lfs merge=lfs -text
+*.exit_hook filter=lfs diff=lfs merge=lfs -text
+*.wrap_invoke filter=lfs diff=lfs merge=lfs -text
+/profiler/native/agent/BUILD filter=lfs diff=lfs merge=lfs -text
+/layoutinspector/BUILD filter=lfs diff=lfs merge=lfs -text
+*.cmd filter=lfs diff=lfs merge=lfs -text
+*.win filter=lfs diff=lfs merge=lfs -text
+*.find_method filter=lfs diff=lfs merge=lfs -text
+*.mi filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
