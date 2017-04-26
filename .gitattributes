@@ -350,6 +350,12 @@
 *.mi filter=lfs diff=lfs merge=lfs -text
 /templates/gradle-projects/NewInstantAppModule/root/module_ignore filter=lfs diff=lfs merge=lfs -text
 /profiler/integration-tests/ProfilerTester/gradlew filter=lfs diff=lfs merge=lfs -text
+/apkparser/archive-patcher/BUILD filter=lfs diff=lfs merge=lfs -text
+/apkparser/archive-patcher/LICENSE filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+/apkparser/archive-patcher/gradlew filter=lfs diff=lfs merge=lfs -text
+*.compact_cfg filter=lfs diff=lfs merge=lfs -text
+*.verbose_cfg filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
