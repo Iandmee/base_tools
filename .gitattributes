@@ -364,6 +364,9 @@
 *.regs_usage filter=lfs diff=lfs merge=lfs -text
 *.scratch_regs filter=lfs diff=lfs merge=lfs -text
 /instantapp-deploy/lib/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/native/perfd/graphics/BUILD filter=lfs diff=lfs merge=lfs -text
+*.code_coverage filter=lfs diff=lfs merge=lfs -text
+/bazel/studio_targets filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
