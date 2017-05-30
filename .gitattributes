@@ -369,6 +369,10 @@
 /bazel/studio_targets filter=lfs diff=lfs merge=lfs -text
 /profiler/gradlew filter=lfs diff=lfs merge=lfs -text
 /lint/libs/intellij-core/NOTICE filter=lfs diff=lfs merge=lfs -text
+/profiler/app/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/tests/android-mock/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/tests/perf-test/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/tests/perfa-app/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
