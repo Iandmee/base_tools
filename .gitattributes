@@ -391,6 +391,7 @@
 /profiler/tests/app-launcher/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/tests/test-app/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/test/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/src/test/java/com/android/build/gradle/integration/sanity/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
