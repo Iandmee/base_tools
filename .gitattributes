@@ -395,6 +395,9 @@
 /profiler/native/perfd/io/BUILD filter=lfs diff=lfs merge=lfs -text
 /build-system/builder-test-api/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/sdk/remote-sdk-packages filter=lfs diff=lfs merge=lfs -text
+/lint/libs/kotlin-compiler/NOTICE filter=lfs diff=lfs merge=lfs -text
+/lint/libs/lint-gradle-api/NOTICE filter=lfs diff=lfs merge=lfs -text
+/lint/libs/lint-gradle/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
