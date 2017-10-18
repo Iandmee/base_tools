@@ -401,6 +401,7 @@
 /lint/libs/lint-kotlin/NOTICE filter=lfs diff=lfs merge=lfs -text
 *.IssueRegistry filter=lfs diff=lfs merge=lfs -text
 /build-system/integration-test/src/test/java/com/android/build/gradle/integration/sdk/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/native/perfd/sessions/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
