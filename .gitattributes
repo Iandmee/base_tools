@@ -404,6 +404,8 @@
 /profiler/native/perfd/sessions/BUILD filter=lfs diff=lfs merge=lfs -text
 *.coverage filter=lfs diff=lfs merge=lfs -text
 *.instrumentation filter=lfs diff=lfs merge=lfs -text
+/bazel/test/gradle/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/test/gradle/library/gradlew filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
