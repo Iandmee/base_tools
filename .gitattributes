@@ -406,6 +406,10 @@
 *.instrumentation filter=lfs diff=lfs merge=lfs -text
 /bazel/test/gradle/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/test/gradle/library/gradlew filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/application/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/application/src/test/java/com/android/build/gradle/integration/sanity/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/application/src/test/java/com/android/build/gradle/integration/sdk/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/integration-test/framework/src/main/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
