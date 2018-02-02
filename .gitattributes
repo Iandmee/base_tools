@@ -418,6 +418,7 @@
 *.vert filter=lfs diff=lfs merge=lfs -text
 *.MockMaker filter=lfs diff=lfs merge=lfs -text
 /layoutinspector/README filter=lfs diff=lfs merge=lfs -text
+/build-system/aapt2/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
