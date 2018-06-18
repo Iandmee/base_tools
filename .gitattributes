@@ -433,6 +433,7 @@
 /deploy/swapper/BUILD filter=lfs diff=lfs merge=lfs -text
 *.aab filter=lfs diff=lfs merge=lfs -text
 /fakeandroid/README filter=lfs diff=lfs merge=lfs -text
+/third_party/kotlin/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
