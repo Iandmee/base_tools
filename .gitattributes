@@ -451,6 +451,7 @@
 /deploy/test/apk1/BUILD filter=lfs diff=lfs merge=lfs -text
 /deploy/test/apk2/BUILD filter=lfs diff=lfs merge=lfs -text
 /deploy/tools/BUILD filter=lfs diff=lfs merge=lfs -text
+/deploy/common/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
