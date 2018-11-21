@@ -456,6 +456,8 @@
 /deploy/test/data/apk2/BUILD filter=lfs diff=lfs merge=lfs -text
 /deploy/test/fakes/BUILD filter=lfs diff=lfs merge=lfs -text
 /apps/DeviceConfig/gradlew filter=lfs diff=lfs merge=lfs -text
+/tracer/BUILD filter=lfs diff=lfs merge=lfs -text
+*.profile filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
