@@ -465,6 +465,7 @@
 /profiler/native/testdata/perfd/cpu/pid_task_1/t1/1/stat filter=lfs diff=lfs merge=lfs -text
 /profiler/native/testdata/perfd/cpu/pid_task_1/t1/2/stat filter=lfs diff=lfs merge=lfs -text
 /profiler/native/testdata/perfd/cpu/pid_task_1/t1/4/stat filter=lfs diff=lfs merge=lfs -text
+/aspects_agent/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
