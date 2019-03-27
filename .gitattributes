@@ -479,6 +479,7 @@
 /profiler/native/perfd/statsd/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/native/perfd/statsd/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /external-annotations/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/sdk/resources/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
