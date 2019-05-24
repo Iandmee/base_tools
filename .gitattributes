@@ -503,6 +503,7 @@
 *.gz filter=lfs diff=lfs merge=lfs -text
 /dynamic-layout-inspector/external/skia-extra/BUILD filter=lfs diff=lfs merge=lfs -text
 /dynamic-layout-inspector/external/skia-extra/WORKSPACE filter=lfs diff=lfs merge=lfs -text
+/dynamic-layout-inspector/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
