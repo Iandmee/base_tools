@@ -513,6 +513,10 @@
 /deploy/installer/tests/BUILD filter=lfs diff=lfs merge=lfs -text
 *.InspectorFactory filter=lfs diff=lfs merge=lfs -text
 /bazel/OWNERS filter=lfs diff=lfs merge=lfs -text
+/bazel/toolchains/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/toolchains/darwin/wrapped_ar filter=lfs diff=lfs merge=lfs -text
+/bazel/toolchains/windows/BUILD filter=lfs diff=lfs merge=lfs -text
+/bazel/toolchains/windows/WORKSPACE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
