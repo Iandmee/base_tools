@@ -530,6 +530,11 @@
 /build-system/aaptcompiler/NOTICE filter=lfs diff=lfs merge=lfs -text
 *.bazelignore filter=lfs diff=lfs merge=lfs -text
 *.kts filter=lfs diff=lfs merge=lfs -text
+/transport/native/agent/BUILD filter=lfs diff=lfs merge=lfs -text
+/transport/native/daemon/BUILD filter=lfs diff=lfs merge=lfs -text
+/transport/native/tests/test/BUILD filter=lfs diff=lfs merge=lfs -text
+/transport/native/tests/testdata/BUILD filter=lfs diff=lfs merge=lfs -text
+/transport/native/utils/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
