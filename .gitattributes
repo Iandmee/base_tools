@@ -538,6 +538,8 @@
 /transport/test-framework/BUILD filter=lfs diff=lfs merge=lfs -text
 /transport/test-framework/test-app/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/tests/profiler-transform-main/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/tests/legacy/perf-test/BUILD filter=lfs diff=lfs merge=lfs -text
+/profiler/tests/legacy/test-app/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
