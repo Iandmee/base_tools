@@ -542,6 +542,7 @@
 /profiler/tests/legacy/test-app/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/app/dynamic-layout-inspector/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/tests/test-framework/BUILD filter=lfs diff=lfs merge=lfs -text
+/app-inspection/agent/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
