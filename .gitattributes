@@ -559,6 +559,7 @@
 /app-inspection/demo/live-store/library/BUILD filter=lfs diff=lfs merge=lfs -text
 /profiler/native/trace_processor_daemon/BUILD filter=lfs diff=lfs merge=lfs -text
 /app-inspection/demo/live-store/inspector/BUILD filter=lfs diff=lfs merge=lfs -text
+/deploy/service/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
