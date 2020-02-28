@@ -569,6 +569,7 @@
 /app-inspection/demo/livestore/app/BreakoutClone/gradlew filter=lfs diff=lfs merge=lfs -text
 /profiler/native/trace_processor_daemon/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 *.heapprofd filter=lfs diff=lfs merge=lfs -text
+/zipflinger/tools/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
