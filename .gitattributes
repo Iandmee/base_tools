@@ -1,3 +1,8 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Windows batch script
+*.cmd text eol=crlf
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
 profiler/native/trace_processor_daemon/testdata/tank.trace filter=lfs diff=lfs merge=lfs -text
