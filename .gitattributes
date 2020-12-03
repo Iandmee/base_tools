@@ -639,6 +639,8 @@
 /dynamic-layout-inspector/skia/BUILD filter=lfs diff=lfs merge=lfs -text
 /dynamic-layout-inspector/skia/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/perfetto_cfg/OWNERS filter=lfs diff=lfs merge=lfs -text
+/utp/android-device-provider-ddmlib/BUILD filter=lfs diff=lfs merge=lfs -text
+*.DeviceProvider filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
