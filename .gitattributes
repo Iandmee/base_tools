@@ -643,6 +643,9 @@
 *.DeviceProvider filter=lfs diff=lfs merge=lfs -text
 /dynamic-layout-inspector/agent/appinspection/BUILD filter=lfs diff=lfs merge=lfs -text
 /dynamic-layout-inspector/agent/appinspection/proto/BUILD filter=lfs diff=lfs merge=lfs -text
+/utp/android-test-plugin-host-device-info-proto/BUILD filter=lfs diff=lfs merge=lfs -text
+/utp/android-test-plugin-host-device-info/BUILD filter=lfs diff=lfs merge=lfs -text
+*.HostPlugin filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
