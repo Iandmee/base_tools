@@ -652,6 +652,7 @@
 /utp/android-device-provider-gradle-proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /utp/android-device-provider-gradle-proto/NOTICE filter=lfs diff=lfs merge=lfs -text
 /utp/android-device-provider-gradle/BUILD filter=lfs diff=lfs merge=lfs -text
+/network-inspector/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
