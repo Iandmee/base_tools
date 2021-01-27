@@ -655,6 +655,7 @@
 /network-inspector/BUILD filter=lfs diff=lfs merge=lfs -text
 *.test-apk filter=lfs diff=lfs merge=lfs -text
 *.idsig filter=lfs diff=lfs merge=lfs -text
+/network-inspector/fake-android/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
