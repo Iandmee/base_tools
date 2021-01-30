@@ -658,6 +658,7 @@
 /network-inspector/fake-android/BUILD filter=lfs diff=lfs merge=lfs -text
 /app-inspection/inspectors/network/BUILD filter=lfs diff=lfs merge=lfs -text
 /app-inspection/inspectors/network/fake-android/BUILD filter=lfs diff=lfs merge=lfs -text
+/dynamic-layout-inspector/agent/transport/fake-android/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
