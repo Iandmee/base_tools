@@ -669,6 +669,7 @@
 /app-inspection/inspectors/backgroundtask/fake-android/BUILD filter=lfs diff=lfs merge=lfs -text
 *.UnitTestTemplate filter=lfs diff=lfs merge=lfs -text
 *.skp filter=lfs diff=lfs merge=lfs -text
+*.bazelrc filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
