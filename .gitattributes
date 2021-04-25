@@ -681,6 +681,7 @@
 /transport/native/jvmti/BUILD filter=lfs diff=lfs merge=lfs -text
 /profgen/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/lnzipper/BUILD filter=lfs diff=lfs merge=lfs -text
+/profgen/profgen/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
