@@ -688,6 +688,7 @@
 *.prof filter=lfs diff=lfs merge=lfs -text
 /adblib/BUILD filter=lfs diff=lfs merge=lfs -text
 /adblib/OWNERS filter=lfs diff=lfs merge=lfs -text
+/deploy/agent/runtime/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
