@@ -695,6 +695,9 @@
 /utp/android-test-plugin-host-coverage-proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /utp/android-test-plugin-host-coverage-proto/NOTICE filter=lfs diff=lfs merge=lfs -text
 /utp/android-test-plugin-host-coverage/BUILD filter=lfs diff=lfs merge=lfs -text
+/third_party/kotlin/1_4_32/BUILD filter=lfs diff=lfs merge=lfs -text
+/third_party/kotlin/for_agp/BUILD filter=lfs diff=lfs merge=lfs -text
+/third_party/kotlin/for_ide_plugin/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
