@@ -712,6 +712,7 @@
 /utp/android-device-provider-ddmlib-proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /utp/android-device-provider-ddmlib-proto/NOTICE filter=lfs diff=lfs merge=lfs -text
 *.profm filter=lfs diff=lfs merge=lfs -text
+/debuggers/native/coroutine/agent/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
