@@ -716,6 +716,7 @@
 /debuggers/test/BUILD filter=lfs diff=lfs merge=lfs -text
 /deploy/agent/native/jni_dispatch/BUILD filter=lfs diff=lfs merge=lfs -text
 /lint/libs/lint-typedef-remover/NOTICE filter=lfs diff=lfs merge=lfs -text
+*.ninja filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
