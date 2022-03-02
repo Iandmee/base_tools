@@ -720,6 +720,7 @@
 *.gpg filter=lfs diff=lfs merge=lfs -text
 *.module filter=lfs diff=lfs merge=lfs -text
 /bazel/toolchains/darwin/BUILD filter=lfs diff=lfs merge=lfs -text
+/adblib-tools/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
