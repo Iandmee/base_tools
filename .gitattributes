@@ -727,6 +727,8 @@
 *.SymbolProcessorProvider filter=lfs diff=lfs merge=lfs -text
 /threading-agent/BUILD filter=lfs diff=lfs merge=lfs -text
 /threading-agent-callback/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/gradle-settings-api/BUILD filter=lfs diff=lfs merge=lfs -text
+/build-system/gradle-settings/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
