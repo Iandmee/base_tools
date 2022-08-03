@@ -742,6 +742,7 @@
 /adb-proxy/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /adb-proxy/reverse-daemon/BUILD filter=lfs diff=lfs merge=lfs -text
 /common/src/main/java/com/android/utils/time/README filter=lfs diff=lfs merge=lfs -text
+/jdwp-tracer/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
