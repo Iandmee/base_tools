@@ -735,6 +735,7 @@
 /adblib-ddmlibcompatibility/BUILD filter=lfs diff=lfs merge=lfs -text
 /adblib-ddmlibcompatibility/OWNERS filter=lfs diff=lfs merge=lfs -text
 /device-provisioner/BUILD filter=lfs diff=lfs merge=lfs -text
+/firebase/testlab/testlab-gradle-plugin/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
