@@ -749,6 +749,8 @@
 /utp/android-test-plugin-host-logcat-proto/BUILD filter=lfs diff=lfs merge=lfs -text
 /bazel/jarjar/BUILD filter=lfs diff=lfs merge=lfs -text
 *.BuiltInsLoader filter=lfs diff=lfs merge=lfs -text
+*.dbg filter=lfs diff=lfs merge=lfs -text
+*.sym filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
