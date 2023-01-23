@@ -757,6 +757,7 @@
 /studio-grpc-testutils/BUILD filter=lfs diff=lfs merge=lfs -text
 /common/version/BUILD filter=lfs diff=lfs merge=lfs -text
 /common/version/com/android/BUILD filter=lfs diff=lfs merge=lfs -text
+/profgen/OWNERS filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
