@@ -772,6 +772,8 @@
 /build-system/kmp-android-prototype/BUILD filter=lfs diff=lfs merge=lfs -text
 /debugger-tests/BUILD filter=lfs diff=lfs merge=lfs -text
 /intellij-native/Dockerfile filter=lfs diff=lfs merge=lfs -text
+*.0-beta01 filter=lfs diff=lfs merge=lfs -text
+/previewlib/cli/NOTICE filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
