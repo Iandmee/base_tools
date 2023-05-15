@@ -776,6 +776,8 @@
 /previewlib/cli/NOTICE filter=lfs diff=lfs merge=lfs -text
 /screenshot/junit-engine/BUILD filter=lfs diff=lfs merge=lfs -text
 *.TestEngine filter=lfs diff=lfs merge=lfs -text
+/profiler/OWNERS filter=lfs diff=lfs merge=lfs -text
+/transport/OWNERS filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
