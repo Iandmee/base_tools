@@ -778,6 +778,9 @@
 *.TestEngine filter=lfs diff=lfs merge=lfs -text
 /profiler/OWNERS filter=lfs diff=lfs merge=lfs -text
 /transport/OWNERS filter=lfs diff=lfs merge=lfs -text
+/kotlin-multiplatform-models/BUILD filter=lfs diff=lfs merge=lfs -text
+/kotlin-multiplatform-models/OWNERS filter=lfs diff=lfs merge=lfs -text
+/kotlin-multiplatform-models/proto/BUILD filter=lfs diff=lfs merge=lfs -text
 * !text !filter !merge !diff
 bazel/prebuilts/mac/bazel-real filter=lfs diff=lfs merge=lfs -text
 profiler/native/testdata/dex/expected/large.code_coverage filter=lfs diff=lfs merge=lfs -text
