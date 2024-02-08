@@ -124,6 +124,10 @@ public class ImlModule extends BazelRule {
         dependencyTags.put(rule, tags);
     }
 
+    public boolean pathForGlobFormatViolated(String s){
+        return s == null || s.startsWith("..") || s.equals("");
+    }
+
     public void addTestFriend(BazelRule rule) {
         testFriends.add(rule);
     }
@@ -137,18 +141,32 @@ public class ImlModule extends BazelRule {
     }
 
     public void addSource(String source) {
+
+        if (pathForGlobFormatViolated(source))
+            return;
+
         sources.add(source);
     }
 
     public void addTestSource(String source) {
+        if(pathForGlobFormatViolated(source))
+            return;
+
         testSources.add(source);
     }
 
     public void addResource(String resource) {
+
+        if(pathForGlobFormatViolated(resource))
+            return;
+
         resources.add(resource);
     }
 
     public void addTestResource(String resource) {
+        if(pathForGlobFormatViolated(resource))
+            return;
+
         testResources.add(resource);
     }
 

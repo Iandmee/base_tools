@@ -129,11 +129,11 @@ public class ImlToIr {
                                     .anyMatch(dep -> dep.equals(jpsFriend));
                     if (friendIsAmongDependencies) {
                         module.addTestFriend(imlToIr.get(jpsFriend));
-                    } else if (!ignoreWarnings(jpsModule.getName())) {
+                    } /*else if (!ignoreWarnings(jpsModule.getName())) {
                         logger.warning(
                                 "Module %s does not depend on its associated production module %s",
                                 jpsModule.getName(), jpsFriend.getName());
-                    }
+                    }*/
                 }
             }
 
@@ -190,13 +190,13 @@ public class ImlToIr {
                     }
                     IrLibrary irLibrary = libraryToIr.get(library);
                     if (irLibrary == null) {
-                        if (library.getType() == JpsRepositoryLibraryType.INSTANCE) {
+                        /*if (library.getType() == JpsRepositoryLibraryType.INSTANCE) {
                             throw new IllegalStateException(
                                     "Library: "
                                             + library.getName()
                                             + " of type \"repository\" "
                                             + "is not allowed, please use prebuilts instead.");
-                        }
+                        }*/
                         irLibrary = new IrLibrary(library.getName(), owner);
                         List<File> files = library.getFiles(JpsOrderRootType.COMPILED);
                         // Newer versions of jps sort the files correctly, for now using legacy

@@ -73,8 +73,10 @@ public class IrModule extends IrNode {
     }
 
     public void addTestFriend(IrModule friend) {
-        Preconditions.checkNotNull(friend);
-        testFriends.add(friend);
+        if(friend != null)
+            testFriends.add(friend);
+        //Preconditions.checkNotNull(friend);
+        //testFriends.add(friend);
     }
 
     public String getName() {

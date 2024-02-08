@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.jps.model.java.JpsJavaDependencyExtension;
+import org.jetbrains.jps.model.java.JpsJavaDependencyScope;
+import org.jetbrains.jps.model.java.JpsJavaExtensionService;
 import org.jetbrains.jps.model.JpsProject;
 import org.jetbrains.jps.model.module.JpsDependencyElement;
 import org.jetbrains.jps.model.module.JpsModule;
@@ -87,6 +90,10 @@ class JpsGraph {
                         List<JpsModule> ins = new ArrayList<>();
                         for (JpsDependencyElement dep : deps) {
                             if (dep instanceof JpsModuleDependency) {
+                                /*JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance().getDependencyExtension(dep);
+                                boolean isTest = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.TEST);
+                                boolean isRuntime = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.RUNTIME);
+                                boolean isProvided = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.PROVIDED); */
                                 JpsModuleDependency moduleDep = (JpsModuleDependency) dep;
                                 if (moduleDep.getModule() == null) {
                                     if (!ImlToIr.ignoreWarnings(jpsModule.getName())) {
@@ -95,9 +102,9 @@ class JpsGraph {
                                                 jpsModule.getName(),
                                                 moduleDep.getModuleReference().getModuleName());
                                     }
-                                } else {
+                                } //else if(!isRuntime && !isTest){
                                     ins.add(moduleDep.getModule());
-                                }
+                                //}
                             }
                         }
                         return ins.iterator();

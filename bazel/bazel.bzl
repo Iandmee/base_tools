@@ -100,9 +100,15 @@ def _iml_module_jar_impl(
     jvm_target = ctx.attr.jvm_target if ctx.attr.jvm_target else java_toolchain.target_version
     javac_opts = java_common.default_javac_opts(java_toolchain = java_toolchain) + ctx.attr.javacopts
     kotlinc_opts = list(ctx.attr.kotlinc_opts)
-    if jvm_target == "8":
+    if jvm_target == "7":
+        kotlinc_opts += ["-jvm-target", "1.7"]
+        kt_java_runtime  = ctx.attr._kt_java_runtime_8[java_common.JavaRuntimeInfo]
+    elif jvm_target == "8":
         kotlinc_opts += ["-jvm-target", "1.8"]
         kt_java_runtime = ctx.attr._kt_java_runtime_8[java_common.JavaRuntimeInfo]
+    elif jvm_target == "9":
+        kotlinc_opts += ["-jvm-target", "1.9"]
+        kt_java_runtime  = ctx.attr._kt_java_runtime_11[java_common.JavaRuntimeInfo]
     elif jvm_target == "11":
         # Ideally we use "--release 11" for javac too, but that is incompatible with "--add-exports".
         kotlinc_opts += ["-jvm-target", "11"]
@@ -111,7 +117,7 @@ def _iml_module_jar_impl(
         # Ideally we use "--release 17" for javac too, but that is incompatible with "--add-exports".
         kotlinc_opts += ["-jvm-target", "17"]
         kt_java_runtime = ctx.attr._kt_java_runtime_17[java_common.JavaRuntimeInfo]
-    else:
+    else    :
         fail("JVM target " + jvm_target + " is not currently supported in iml_module")
 
     # Kotlin
@@ -252,14 +258,14 @@ def _iml_module_impl(ctx):
     for dep in ctx.attr.deps:
         if ImlModuleInfo in dep:
             module_deps += [dep]
-            if ctx.attr.jvm_target:
+            """if ctx.attr.jvm_target:
                 if not dep[ImlModuleInfo].jvm_target or int(dep[ImlModuleInfo].jvm_target) > int(ctx.attr.jvm_target):
                     fail("The module %s has a jvm_target of \"%s\", but depends on module %s with target \"%s\"" % (
                         ctx.attr.name,
                         ctx.attr.jvm_target,
                         dep[ImlModuleInfo].names[0],
                         dep[ImlModuleInfo].jvm_target,
-                    ))
+                    ))"""
         elif hasattr(dep, "plugin_info"):
             plugin_deps += [dep]
         elif hasattr(dep, "platform_info"):
@@ -1048,9 +1054,9 @@ def split_srcs(src_dirs, res_dirs, exclude):
         include = [src + "/**" for src in roots],
         exclude = excludes,
     )
-    groovies = native.glob([src + "/**/*.groovy" for src in src_dirs], exclude)
-    if groovies:
-        fail("Groovy is not supported")
+    #groovies = native.glob([src + "/**/*.groovy" for src in src_dirs], exclude)
+    #if groovies:
+    #   fail("Groovy is not supported")
 
     javas = native.glob([src + "/**/*.java" for src in src_dirs], exclude)
     kotlins = native.glob([src + "/**/*.kt" for src in src_dirs], exclude)

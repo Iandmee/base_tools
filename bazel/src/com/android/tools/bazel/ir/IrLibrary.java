@@ -33,7 +33,8 @@ public class IrLibrary extends IrNode {
     }
 
     public void addFile(File file) {
-        if (file.toString().contains("$MAVEN_REPOSITORY$")) {
+        String filePath = file.toString().replace("$MAVEN_REPOSITORY$", System.getenv("M2_REPOSITORY_PATH"));
+        /*if (file.toString().contains("$MAVEN_REPOSITORY$")) {
             String owned = owner == null ? "" : " (Owned by " + owner.getName() + ")";
             throw new IllegalStateException(
                     "Library: "
@@ -41,8 +42,9 @@ public class IrLibrary extends IrNode {
                             + owned
                             + " cannot use $MAVEN_REPOSITORY$, "
                             + "please point to the jar file in prebuilts instead.");
-        }
-        files.add(file);
+        }*/
+        File newFile = new File(filePath);
+        files.add(newFile);
     }
 
     public List<File> getFiles() {

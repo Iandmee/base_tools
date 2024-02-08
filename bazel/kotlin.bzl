@@ -48,12 +48,12 @@ def kotlin_compile(ctx, name, srcs, deps, friend_jars, out, out_ijar, java_runti
 
     args.add("-module-name", name)
     args.add("-nowarn")  # Mirrors the default javac opts.
-    args.add("-api-version", "1.6")
-    args.add("-language-version", "1.6")
+    args.add("-api-version", "1.9")
+    args.add("-language-version", "1.9")
     args.add("-Xjvm-default=all-compatibility")
     args.add("-no-stdlib")
     args.add("-Xsam-conversions=class")  # Needed for Gradle configuration caching (see b/202512551).
-
+    args.add("-opt-in=com.intellij.openapi.util.IntellijInternalApi")
     tools = []
     tools.append(ctx.file._jvm_abi_gen)
     if out_ijar:
