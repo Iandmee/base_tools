@@ -50,10 +50,16 @@ def kotlin_compile(ctx, name, srcs, deps, friend_jars, out, out_ijar, java_runti
     args.add("-nowarn")  # Mirrors the default javac opts.
     args.add("-api-version", "1.9")
     args.add("-language-version", "1.9")
-    args.add("-Xjvm-default=all-compatibility")
+    args.add("-Xjvm-default=all")
     args.add("-no-stdlib")
     args.add("-Xsam-conversions=class")  # Needed for Gradle configuration caching (see b/202512551).
     args.add("-opt-in=com.intellij.openapi.util.IntellijInternalApi")
+    args.add("-Xplugin=/home/jetbrains/kotlinc/lib/kotlinx-serialization-compiler-plugin.jar")
+    args.add("-Xallow-kotlin-package")
+    args.add("-opt-in=com.intellij.openapi.util.IntellijInternalApi")
+    args.add("-opt-in=org.jetbrains.kotlin.utils.addToStdlib.UnsafeCastFunction")
+    args.add("-Xcontext-receivers")
+    args.add("-opt-in=org.jetbrains.kotlin.analysis.api.lifetime.KtAllowProhibitedAnalyzeFromWriteAction")
     tools = []
     tools.append(ctx.file._jvm_abi_gen)
     if out_ijar:
