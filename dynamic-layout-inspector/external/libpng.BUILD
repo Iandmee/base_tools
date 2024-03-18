@@ -34,7 +34,7 @@ cc_library(
         "//conditions:default": [
             "-std=gnu89",
             "-Wall",
-            "-Werror",
+            #"-Werror",
             "-Wno-unused-parameter",
             "-Wno-unused-but-set-variable",
         ],
