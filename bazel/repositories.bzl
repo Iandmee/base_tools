@@ -233,7 +233,7 @@ def setup_vendor_repos():
 
 def setup_external_repositories(prefix = ""):
     _setup_git_repos(_git, prefix)
-    _setup_archive_repos(prefix)
+    #_setup_archive_repos(prefix)
     _setup_binds()
 
 def _setup_git_repos(repos, prefix = ""):
