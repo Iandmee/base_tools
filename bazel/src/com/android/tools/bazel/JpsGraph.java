@@ -38,6 +38,13 @@ class JpsGraph {
     private final List<JpsModule> modules; // Modules in topological order
     private final BazelToolsLogger logger;
 
+    public static boolean testOrRuntimeDependency(JpsDependencyElement dependency){
+        JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance()
+                .getDependencyExtension(dependency);
+        return (extension != null) && (extension.getScope().equals(JpsJavaDependencyScope.TEST)
+                || extension.getScope().equals(JpsJavaDependencyScope.RUNTIME));
+    }
+
     public JpsGraph(JpsProject project, BazelToolsLogger logger) {
         this.logger = logger;
         modules = new ArrayList<>();
@@ -90,10 +97,6 @@ class JpsGraph {
                         List<JpsModule> ins = new ArrayList<>();
                         for (JpsDependencyElement dep : deps) {
                             if (dep instanceof JpsModuleDependency) {
-                                /*JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance().getDependencyExtension(dep);
-                                boolean isTest = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.TEST);
-                                boolean isRuntime = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.RUNTIME);
-                                boolean isProvided = (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.PROVIDED); */
                                 JpsModuleDependency moduleDep = (JpsModuleDependency) dep;
                                 if (moduleDep.getModule() == null) {
                                     if (!ImlToIr.ignoreWarnings(jpsModule.getName())) {
@@ -102,9 +105,9 @@ class JpsGraph {
                                                 jpsModule.getName(),
                                                 moduleDep.getModuleReference().getModuleName());
                                     }
-                                } //else if(!isRuntime && !isTest){
+                                }
+                                if(!testOrRuntimeDependency(dep))
                                     ins.add(moduleDep.getModule());
-                                //}
                             }
                         }
                         return ins.iterator();

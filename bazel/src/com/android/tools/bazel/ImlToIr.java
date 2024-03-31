@@ -150,6 +150,9 @@ public class ImlToIr {
             }
 
             for (JpsDependencyElement dependency : jpsModule.getDependenciesList().getDependencies()) {
+                if(JpsGraph.testOrRuntimeDependency(dependency))
+                    continue;
+
                 JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance()
                         .getDependencyExtension(dependency);
                 boolean isTest = (extension != null) &&
@@ -160,6 +163,7 @@ public class ImlToIr {
                         (extension != null)
                                 && extension.getScope().equals(JpsJavaDependencyScope.PROVIDED);
                 boolean isExported = (extension != null) && !isRuntime && extension.isExported();
+                //boolean isTestOrRuntime = isTest || isRuntime;
                 IrModule.Scope scope;
                 if (isTest) scope = IrModule.Scope.TEST;
                 else if (isRuntime) scope = IrModule.Scope.RUNTIME;
