@@ -28,6 +28,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,15 +107,16 @@ public class ImlToIr {
             return irProject;
         }
 
-        Map<JpsModule, IrModule> imlToIr = new HashMap<>();
+        Map<JpsModule, HashMap<String, IrModule>> imlToIr = new HashMap<>();
         Map<JpsLibrary, IrLibrary> libraryToIr = new HashMap<>();
         for (JpsModule jpsModule : graph.getModulesInTopologicalOrder()) {
-            IrModule module = createIrModule(jpsModule);
-            if (config.ignoreModule(workspace, module)) {
+            HashMap<String, IrModule> modules = createIrModule(jpsModule);
+
+            if (config.ignoreModule(workspace, modules.get("module"))) {
                 continue;
             }
-            irProject.modules.add(module);
-            imlToIr.put(jpsModule, module);
+            irProject.modules.addAll(modules.values());
+            imlToIr.put(jpsModule, modules);
 
             // Check if this is a test module with an associated production module that should be
             // treated as a Kotlin friend. I.e., detect an iml line like this:
@@ -128,7 +130,10 @@ public class ImlToIr {
                             JpsJavaExtensionService.dependencies(jpsModule).getModules().stream()
                                     .anyMatch(dep -> dep.equals(jpsFriend));
                     if (friendIsAmongDependencies) {
-                        module.addTestFriend(imlToIr.get(jpsFriend));
+                        IrModule testFriend = imlToIr.get(jpsFriend).get("test");
+                        IrModule testModule = modules.get("test");
+                        if(testModule != null)
+                            testModule.addTestFriend(testFriend == null ? imlToIr.get(jpsFriend).get("module") : testFriend);
                     } /*else if (!ignoreWarnings(jpsModule.getName())) {
                         logger.warning(
                                 "Module %s does not depend on its associated production module %s",
@@ -142,15 +147,22 @@ public class ImlToIr {
                 if (root.exists()) {
                     // Projects can exclude specific files from compilation
                     for (File excludeFile : excludedFiles) {
-                        if (excludeFile.toPath().startsWith(root.toPath())) {
-                            module.addExcludeFile(excludeFile);
+                        if (excludeFile.toPath().startsWith(root.toPath()) && (folder.getRootType().equals(JavaSourceRootType.TEST_SOURCE)
+                                || folder.getRootType().equals(JavaResourceRootType.TEST_RESOURCE))) {
+                            IrModule testModule = modules.get("test");
+                            assert testModule != null;
+                            testModule.addExcludeFile(excludeFile);
                         }
+                        else if(excludeFile.toPath().startsWith(root.toPath()))
+                            modules.get("module").addExcludeFile(excludeFile);
                     }
                 }
             }
         }
         for (JpsModule jpsModule : graph.getModulesInTopologicalOrder()) {
-            IrModule module = imlToIr.get(jpsModule);
+            HashMap<String, IrModule> modules = imlToIr.get(jpsModule);
+            IrModule prodModule = modules.get("module");
+            IrModule testModule = modules.get("test");
             for (JpsDependencyElement dependency : jpsModule.getDependenciesList().getDependencies()) {
                 if(JpsGraph.isRuntimeDependency(dependency))
                     continue;
@@ -171,6 +183,8 @@ public class ImlToIr {
                 else if (isRuntime) scope = IrModule.Scope.RUNTIME;
                 else if (isProvided) scope = IrModule.Scope.PROVIDED;
                 else scope = IrModule.Scope.COMPILE;
+                if(modules.size() == 2)
+                    testModule.addDependency(prodModule, false, IrModule.Scope.COMPILE);
 
                 if (dependency instanceof JpsLibraryDependency) {
                     // A dependency to a jar file
@@ -192,7 +206,7 @@ public class ImlToIr {
                     JpsCompositeElement resolved = parent.resolve();
                     IrModule owner = null;
                     if (resolved instanceof JpsModule) {
-                        owner = imlToIr.get(resolved);
+                        owner = imlToIr.get(resolved).get("module");
                     }
                     IrLibrary irLibrary = libraryToIr.get(library);
                     if (irLibrary == null) {
@@ -246,29 +260,52 @@ public class ImlToIr {
                         }
                         libraryToIr.put(library, irLibrary);
                     }
-                    module.addDependency(irLibrary, isExported, scope);
+                    if(scope == IrModule.Scope.TEST) {
+                        if(testModule != null) {
+                            testModule.addDependency(irLibrary, isExported, scope);
+                        }
+                        else {
+                            logger.info("Module "
+                                    + prodModule.getName()
+                                    +
+                                    " without TEST source files is containing TEST dependency "
+                                    + irLibrary.getName());
+                        }
+                    }
+                    else {
+                        prodModule.addDependency(irLibrary, isExported, scope);
+                    }
                 } else if (dependency instanceof JpsModuleDependency) {
                     // A dependency to another module
                     JpsModuleDependency moduleDependency = (JpsModuleDependency) dependency;
                     JpsModule dep = moduleDependency.getModule();
                     if (dep == null) {
-                        if (!ignoreWarnings(module.getName())) {
+                        if (!ignoreWarnings(prodModule.getName())) {
                             logger.warning(
                                     "Invalid module dependency: "
                                             + moduleDependency.getModuleReference().getModuleName()
                                             + " from "
-                                            + module.getName());
+                                            + prodModule.getName());
                         }
                     } else {
                         dot.addEdge(jpsModule.getName(), dep.getName(), scopeToColor(scope));
-                        IrModule irDep = imlToIr.get(dep);
+                        IrModule irDep = imlToIr.get(dep).get("module");
                         if (irDep == null) {
                             throw new IllegalStateException(
                                     "Cannot find dependency " + dep.getName() + " from " +
-                                            module.getName());
+                                            prodModule.getName());
                         }
-                        if (irDep != jpsModule) {
-                            module.addDependency(irDep, isExported, scope);
+                        if (irDep != jpsModule && scope == IrModule.Scope.TEST) {
+                            if(testModule != null) {
+                                testModule.addDependency(irDep, isExported, scope);
+                            }
+                            else{
+                                logger.info("Module " + prodModule.getName() +
+                                        " without TEST source files is containing TEST dependency " + irDep.getName());
+                            }
+                        }
+                        else if(irDep != jpsModule){
+                            modules.get("module").addDependency(irDep, isExported, scope);
                         }
                     }
                 } else if (dependency instanceof JpsSdkDependency) {
@@ -276,7 +313,7 @@ public class ImlToIr {
                     String sdkName = sdk.getSdkReference().getSdkName();
                     if (sdkName.equals("Android Studio")) {
                         IrLibrary irSdk = new IrLibrary("studio-sdk", null);
-                        module.addDependency(irSdk, false, IrModule.Scope.COMPILE);
+                        prodModule.addDependency(irSdk, false, IrModule.Scope.COMPILE);
                     }
                 }
             }
@@ -324,9 +361,9 @@ public class ImlToIr {
         return "";
     }
 
-    private static IrModule createIrModule(JpsModule module) {
-
+    private static HashMap<String, IrModule> createIrModule(JpsModule module) {
         String moduleName = module.getName();
+        String moduleNameTestgen = moduleName + ".testgen";
         File base = JpsModelSerializationDataService.getBaseDirectory(module);
         if (base == null) {
             throw new IllegalStateException(
@@ -337,7 +374,7 @@ public class ImlToIr {
             throw new IllegalStateException("Cannot find module iml file: " + moduleFile);
         }
         IrModule irModule = new IrModule(moduleName, moduleFile, base);
-
+        IrModule irModuleTestgen = new IrModule(moduleNameTestgen, moduleFile, base);
         // Sync JVM target level.
         // Simplification: we assume that the JVM target is the same for both Java and Kotlin.
         // We do not currently consult the Kotlin module facet for Kotlin-specific settings.
@@ -373,6 +410,7 @@ public class ImlToIr {
         }
         if (jvmTarget != projectJvmTarget) {
             irModule.setJvmTarget(String.valueOf(jvmTarget));
+            irModuleTestgen.setJvmTarget(String.valueOf(jvmTarget));
         }
 
         // Sync additional Javac options.
@@ -384,6 +422,7 @@ public class ImlToIr {
         if (javacAdditionalOptions != null) {
             for (String javacOption : ParametersListUtil.parse(javacAdditionalOptions)) {
                 irModule.addJavacOption(javacOption);
+                irModuleTestgen.addJavacOption(javacOption);
             }
         }
 
@@ -391,30 +430,39 @@ public class ImlToIr {
             File file = root.getFile();
             if (file.exists()) {
                 boolean source = false;
+                boolean testSource = false;
                 if (root.getRootType().equals(JavaSourceRootType.TEST_SOURCE)) {
-                    irModule.addTestSource(file);
-                    source = true;
+                    irModuleTestgen.addTestSource(file);
+                    testSource = true;
                 }
                 if (root.getRootType().equals(JavaSourceRootType.SOURCE)) {
                     irModule.addSource(file);
                     source = true;
                 }
-                if (source) {
+                if (source || testSource) {
                     String prefix =
                             ((JavaSourceRootProperties) root.getProperties()).getPackagePrefix();
-                    if (!prefix.isEmpty()) {
+                    if (!prefix.isEmpty() && source) {
                         irModule.addPrefix(file, prefix);
+                    }
+                    else if(!prefix.isEmpty()){
+                        irModuleTestgen.addPrefix(file, prefix);
                     }
                 }
 
                 if (root.getRootType().equals(JavaResourceRootType.TEST_RESOURCE)) {
-                    irModule.addTestResource(file);
+                    irModuleTestgen.addTestResource(file);
                 } else if (root.getRootType().equals(JavaResourceRootType.RESOURCE)) {
                     irModule.addResource(file);
                 }
             }
         }
-        return irModule;
+        HashMap<String, IrModule> modules = new HashMap<>();
+        modules.put("module", irModule);
+        if(!irModuleTestgen.getTestSources().isEmpty())
+            modules.put("test", irModuleTestgen);
+
+        return modules;
     }
 
     private static List<File> excludedFiles(JpsCompilerExcludes excludes) {

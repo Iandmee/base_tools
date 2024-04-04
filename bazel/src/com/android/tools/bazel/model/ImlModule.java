@@ -99,7 +99,7 @@ public class ImlModule extends BazelRule {
                                 .map(tag -> tag.name().toLowerCase())
                                 .collect(Collectors.joining(", ", "[", "]"));
             }
-            deps.add(dependency.getLabel() + suffix);
+            deps.add(dependency.getLabel()); //+ suffix);
         }
         return deps;
     }

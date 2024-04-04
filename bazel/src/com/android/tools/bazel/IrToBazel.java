@@ -189,7 +189,9 @@ public class IrToBazel {
                             imlModule.addDependency(rule, dependency.exported, scopes);
                             continue;
                         }
-                        if (library.owner != null && library.owner != module) {
+                        if (library.owner != null && library.owner != module && !(library.owner.getName() + ".testgen").equals(module.getName())) {
+                            System.out.println(library.owner.getName());
+                            System.out.println(module.getName());
                             throw new IllegalStateException(
                                     "Module library belongs to a different module");
                         }
