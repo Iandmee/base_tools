@@ -20,10 +20,9 @@ import com.intellij.util.graph.DFSTBuilder;
 import com.intellij.util.graph.Graph;
 import com.intellij.util.graph.GraphGenerator;
 import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+
+import java.util.*;
+
 import org.jetbrains.jps.model.java.JpsJavaDependencyExtension;
 import org.jetbrains.jps.model.java.JpsJavaDependencyScope;
 import org.jetbrains.jps.model.java.JpsJavaExtensionService;
@@ -38,11 +37,34 @@ class JpsGraph {
     private final List<JpsModule> modules; // Modules in topological order
     private final BazelToolsLogger logger;
 
-    public static boolean testOrRuntimeDependency(JpsDependencyElement dependency){
+    public static boolean isRuntimeDependency(JpsDependencyElement dependency){
         JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance()
                 .getDependencyExtension(dependency);
-        return (extension != null) && (extension.getScope().equals(JpsJavaDependencyScope.TEST)
-                || extension.getScope().equals(JpsJavaDependencyScope.RUNTIME));
+        return (extension != null) && extension.getScope().equals(JpsJavaDependencyScope.RUNTIME);
+    }
+
+    private boolean containsCycleOfOneDependencyType(JpsModule current, JpsJavaDependencyScope scope, Set<JpsModule> component, HashMap<JpsModule, Integer> used) {
+        used.put(current, 1);
+        for (JpsDependencyElement dep : current.getDependenciesList().getDependencies()) {
+            if (!(dep instanceof JpsModuleDependency)) {
+                continue;
+            }
+            JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance()
+                    .getDependencyExtension(dep);
+            JpsModule moduleDep = ((JpsModuleDependency) dep).getModule();
+            if (extension == null || !extension.getScope().equals(scope)
+                                  || !component.contains(moduleDep)) {
+                continue;
+            }
+            Integer usedBefore = used.get(moduleDep);
+            if (usedBefore != null && usedBefore == 1
+                    || usedBefore == null &&
+                    containsCycleOfOneDependencyType(moduleDep, scope, component, used)) {
+                return true;
+            }
+        }
+        used.put(current, 2);
+        return false;
     }
 
     public JpsGraph(JpsProject project, BazelToolsLogger logger) {
@@ -69,16 +91,33 @@ class JpsGraph {
     }
 
     private void checkNoCycles(List<JpsModule> component) {
-        // If the component has more than one element, there is a cycle:
-        if (component.size() > 1) {
-            StringBuilder message = new StringBuilder();
-            message.append("Found circular module dependency: ")
-                    .append(component.size())
-                    .append(" modules");
+        if(component.size() == 1)
+            return;
+
+        List<JpsJavaDependencyScope> scopesToCheck = Arrays.asList(JpsJavaDependencyScope.TEST,
+                JpsJavaDependencyScope.COMPILE);
+        for (JpsJavaDependencyScope scope : scopesToCheck) {
+            HashMap<JpsModule, Integer> used = new HashMap<>();
+            Set<JpsModule> componentSet = new HashSet<>(component);
+            boolean containsCycle = false;
             for (JpsModule module : component) {
-                message.append("        ").append(module.getName());
+                if (used.get(module) == null && containsCycleOfOneDependencyType(module, scope, componentSet, used)) {
+                    containsCycle = true;
+                    break;
+                }
             }
-            logger.error(message.toString());
+            if (containsCycle) {
+                StringBuilder message = new StringBuilder();
+                message.append("Found circular module dependency of ")
+                        .append(scope)
+                        .append(" scope: ")
+                        .append(component.size())
+                        .append(" modules");
+                for (JpsModule module : component) {
+                    message.append("        ").append(module.getName());
+                }
+                logger.error(message.toString());
+            }
         }
     }
 
@@ -106,7 +145,7 @@ class JpsGraph {
                                                 moduleDep.getModuleReference().getModuleName());
                                     }
                                 }
-                                if(!testOrRuntimeDependency(dep))
+                                if(!isRuntimeDependency(dep))
                                     ins.add(moduleDep.getModule());
                             }
                         }

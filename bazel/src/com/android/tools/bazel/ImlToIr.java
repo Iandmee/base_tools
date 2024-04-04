@@ -148,9 +148,11 @@ public class ImlToIr {
                     }
                 }
             }
-
+        }
+        for (JpsModule jpsModule : graph.getModulesInTopologicalOrder()) {
+            IrModule module = imlToIr.get(jpsModule);
             for (JpsDependencyElement dependency : jpsModule.getDependenciesList().getDependencies()) {
-                if(JpsGraph.testOrRuntimeDependency(dependency))
+                if(JpsGraph.isRuntimeDependency(dependency))
                     continue;
 
                 JpsJavaDependencyExtension extension = JpsJavaExtensionService.getInstance()
