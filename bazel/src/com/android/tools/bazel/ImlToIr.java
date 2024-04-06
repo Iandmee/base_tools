@@ -184,7 +184,7 @@ public class ImlToIr {
                 else if (isProvided) scope = IrModule.Scope.PROVIDED;
                 else scope = IrModule.Scope.COMPILE;
                 if(modules.size() == 2)
-                    testModule.addDependency(prodModule, false, IrModule.Scope.COMPILE);
+                    testModule.addDependency(prodModule, true, IrModule.Scope.TEST);
 
                 if (dependency instanceof JpsLibraryDependency) {
                     // A dependency to a jar file
@@ -260,20 +260,18 @@ public class ImlToIr {
                         }
                         libraryToIr.put(library, irLibrary);
                     }
-                    if(scope == IrModule.Scope.TEST) {
-                        if(testModule != null) {
-                            testModule.addDependency(irLibrary, isExported, scope);
-                        }
-                        else {
+                    if(scope != IrModule.Scope.TEST) {
+                        prodModule.addDependency(irLibrary, isExported, scope);
+                    }
+                    if(testModule != null){
+                        testModule.addDependency(irLibrary, isExported, scope);
+                    }
+                    else if(testModule == null && scope == IrModule.Scope.TEST) {
                             logger.info("Module "
                                     + prodModule.getName()
                                     +
                                     " without TEST source files is containing TEST dependency "
                                     + irLibrary.getName());
-                        }
-                    }
-                    else {
-                        prodModule.addDependency(irLibrary, isExported, scope);
                     }
                 } else if (dependency instanceof JpsModuleDependency) {
                     // A dependency to another module
@@ -290,22 +288,22 @@ public class ImlToIr {
                     } else {
                         dot.addEdge(jpsModule.getName(), dep.getName(), scopeToColor(scope));
                         IrModule irDep = imlToIr.get(dep).get("module");
-                        if (irDep == null) {
+                        IrModule irDepTest = imlToIr.get(dep).get("test");
+                        IrModule irDepFinal = (scope == IrModule.Scope.TEST && irDepTest != null) ? irDepTest : irDep;
+                        if (irDepFinal == null) {
                             throw new IllegalStateException(
                                     "Cannot find dependency " + dep.getName() + " from " +
                                             prodModule.getName());
                         }
-                        if (irDep != jpsModule && scope == IrModule.Scope.TEST) {
-                            if(testModule != null) {
-                                testModule.addDependency(irDep, isExported, scope);
-                            }
-                            else{
-                                logger.info("Module " + prodModule.getName() +
-                                        " without TEST source files is containing TEST dependency " + irDep.getName());
-                            }
+                        if(irDepFinal != jpsModule && scope != IrModule.Scope.TEST){
+                            prodModule.addDependency(irDepFinal,  isExported, scope);
                         }
-                        else if(irDep != jpsModule){
-                            modules.get("module").addDependency(irDep, isExported, scope);
+                        if(irDepFinal != jpsModule && testModule != null) {
+                            testModule.addDependency(irDepFinal, isExported, scope);
+                        }
+                        else if (irDepFinal != jpsModule && testModule == null && scope == IrModule.Scope.TEST) {
+                                logger.info("Module " + prodModule.getName() +
+                                        " without TEST source files is containing TEST dependency " + irDepFinal.getName());
                         }
                     }
                 } else if (dependency instanceof JpsSdkDependency) {

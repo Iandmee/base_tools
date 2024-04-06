@@ -587,7 +587,7 @@ def iml_module(
     test_deps = []
     for dep in deps:
         label, label_tags = _get_label_and_tags(dep)
-        if "test" not in label_tags:
+        if not name.endswith('.testgen'):
             prod_deps += [label]
         test_deps += [label]
 
